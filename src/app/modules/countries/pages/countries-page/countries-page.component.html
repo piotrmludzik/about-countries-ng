@@ -1,0 +1,3 @@
+@if (componentState | async; as componentState) {
+  <acn-countries-table [columns]="componentState.columns" [data]="componentState.countries" />
+}

@@ -1,0 +1,38 @@
+<p-table [columns]="columns" [value]="data">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      @for (col of columns; track col.field) {
+        <th>{{ col.header }}</th>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-records let-columns="columns">
+    <tr>
+      @for (col of columns; track col.field) {
+        <td>
+          @switch (col.field) {
+            @case (countriesFields.name) {
+              {{ records[col.field].common }}
+            }
+            @case (countriesFields.area) {
+              {{ records[col.field] | area }}
+            }
+            @case (countriesFields.population) {
+              {{ records[col.field] | number }}
+            }
+            @case (countriesFields.languages) {
+              {{ records[col.field] | languageList }}
+            }
+            @case (countriesFields.timezones) {
+              {{ records[col.field] | stringList }}
+            }
+            @default {
+              {{ records[col.field] }}
+            }
+          }
+        </td>
+      }
+    </tr>
+  </ng-template>
+</p-table>

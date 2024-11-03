@@ -28,6 +28,9 @@
         },
         "@schematics/angular:service": {
           "skipTests": true
+        },
+        "@ngrx/schematics:component-store": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -117,5 +120,10 @@
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }
