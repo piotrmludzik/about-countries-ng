@@ -1,0 +1,81 @@
+<code_scheme name="About countries" version="173">
+  <HTMLCodeStyleSettings>
+    <option name="HTML_ATTRIBUTE_WRAP" value="4" />
+    <option name="HTML_ALIGN_TEXT" value="true" />
+    <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
+  </HTMLCodeStyleSettings>
+  <JSCodeStyleSettings version="1">
+    <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="ENFORCE_TRAILING_COMMA" value="Remove" />
+    <option name="IMPORTS_WRAP" value="0" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="IMPORT_SORT_MODULE_NAME" value="true" />
+  </JSCodeStyleSettings>
+  <JSON>
+    <option name="ARRAY_WRAPPING" value="1" />
+  </JSON>
+  <TypeScriptCodeStyleSettings version="1">
+    <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="ENFORCE_TRAILING_COMMA" value="Remove" />
+    <option name="IMPORTS_WRAP" value="0" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="IMPORT_SORT_MODULE_NAME" value="true" />
+  </TypeScriptCodeStyleSettings>
+  <XML>
+    <option name="XML_ATTRIBUTE_WRAP" value="0" />
+    <option name="XML_KEEP_LINE_BREAKS_IN_TEXT" value="false" />
+    <option name="XML_KEEP_BLANK_LINES" value="0" />
+    <option name="XML_WHITE_SPACE_AROUND_CDATA" value="2" />
+  </XML>
+  <codeStyleSettings language="HTML">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="JavaScript">
+    <option name="TERNARY_OPERATION_WRAP" value="5" />
+    <option name="TERNARY_OPERATION_SIGNS_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_WRAP" value="5" />
+    <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="SCSS">
+    <indentOptions>
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="TypeScript">
+    <option name="RIGHT_MARGIN" value="200" />
+    <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
+    <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
+    <option name="TERNARY_OPERATION_WRAP" value="5" />
+    <option name="TERNARY_OPERATION_SIGNS_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_WRAP" value="5" />
+    <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+    <option name="SOFT_MARGINS" value="120" />
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="XML">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+      <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+</code_scheme>
