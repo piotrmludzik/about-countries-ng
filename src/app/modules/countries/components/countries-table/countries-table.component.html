@@ -1,8 +1,20 @@
-<p-table [columns]="columns" [value]="data">
+<p-table [columns]="columns"
+         [value]="data"
+         [sortField]="sortField"
+         (sortFunction)="sortData.emit($event)"
+         [customSort]="true">
+
   <ng-template pTemplate="header" let-columns>
     <tr>
       @for (col of columns; track col.field) {
-        <th>{{ col.header }}</th>
+        @if (col.sortFn) {
+          <th [pSortableColumn]="col.field">
+            {{ col.header }}
+            <p-sortIcon [field]="col.field"/>
+          </th>
+        } @else {
+          <th>{{ col.header }}</th>
+        }
       }
     </tr>
   </ng-template>

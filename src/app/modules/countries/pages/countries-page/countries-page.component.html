@@ -1,3 +1,6 @@
 @if (componentState | async; as componentState) {
-  <acn-countries-table [columns]="componentState.columns" [data]="componentState.countries" />
+  <acn-countries-table [columns]="componentState.columns"
+                       [data]="componentState.countries"
+                       [sortField]="componentState.sortField"
+                       (sortData)="onSortData($event)"/>
 }
