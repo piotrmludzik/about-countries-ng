@@ -3,7 +3,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { exhaustMap, tap } from 'rxjs';
 import { Column } from '../../../../shared/models';
-import { countriesFields } from '../../components/constants/countries-fields.model';
+import { countriesFields } from '../../constants/countries-fields.model';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
 import { CountriesService } from '../../services/countries.service';
 
@@ -16,13 +16,13 @@ export interface CountriesPageState {
 
 const defaultColumns: Column[] = [
   {field: countriesFields.numbering, header: ''},
-  {field: countriesFields.name, header: 'Name', sortable: true},
-  {field: countriesFields.continents, header: 'Continents', sortable: true},
-  {field: countriesFields.area, header: 'Area', sortable: true},
-  {field: countriesFields.population, header: 'Population', sortable: true},
-  {field: countriesFields.capital, header: 'Capital', sortable: true},
-  {field: countriesFields.languages, header: 'Languages', sortable: true},
-  {field: countriesFields.timezones, header: 'Timezones', sortable: true}
+  {field: countriesFields.name, header: 'Name'},
+  {field: countriesFields.continents, header: 'Continents'},
+  {field: countriesFields.area, header: 'Area'},
+  {field: countriesFields.population, header: 'Population'},
+  {field: countriesFields.capital, header: 'Capital'},
+  {field: countriesFields.languages, header: 'Languages'},
+  {field: countriesFields.timezones, header: 'Timezones'}
 ];
 const defaultFields = Object.keys(countriesFields);
 const initialState: CountriesPageState = {

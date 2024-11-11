@@ -16,7 +16,10 @@
               {{ rowIndex + 1 }}
             }
             @case (countriesFields.name) {
-              {{ records[col.field].common }}
+              <div class="flex flex-nowrap gap-2">
+                <span>{{ records[countriesFields.flag] }}</span>
+                <span>{{ records[countriesFields.name].common }}</span>
+              </div>
             }
             @case (countriesFields.area) {
               {{ records[col.field] | area }}

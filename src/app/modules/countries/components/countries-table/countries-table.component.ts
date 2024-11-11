@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Column } from '../../../../shared/models';
+import { countriesFields } from '../../constants/countries-fields.model';
 import { CountryRecord } from '../../models/country-record.model';
-import { countriesFields } from '../constants/countries-fields.model';
 
 @Component({
   selector: 'acn-countries-table',
