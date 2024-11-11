@@ -1,8 +1,11 @@
-<p-table [columns]="columns"
+<p-table #countriesTable
+         [columns]="columns"
          [value]="data"
+         dataKey="cca3"
+         [globalFilterFields]="['name.common', 'capital']"
+         [customSort]="true"
          [sortField]="sortField"
-         (sortFunction)="sortData.emit($event)"
-         [customSort]="true">
+         (sortFunction)="sortData.emit($event)">
 
   <ng-template pTemplate="header" let-columns>
     <tr>

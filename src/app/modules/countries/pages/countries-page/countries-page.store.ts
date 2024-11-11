@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { concatLatestFrom, tapResponse } from '@ngrx/operators';
+import { Store } from '@ngrx/store';
 import { SortEvent } from 'primeng/api';
 import { exhaustMap, tap } from 'rxjs';
+import { appSelectors } from '../../../../core/store/app.selectors';
 import { Column, SortOrder } from '../../../../shared/models';
 import { countriesFields } from '../../constants/countries-fields.model';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
@@ -67,15 +69,17 @@ const initialState: CountriesPageState = {
   sortField: countriesFields.name,
   filters: {
     fields: defaultFields
-  }
+  } as CountryRecordFilters
 };
 
 @Injectable()
 export class CountriesPageStore extends ComponentStore<CountriesPageState> {
 
-  constructor(private countriesService: CountriesService) {
+  constructor(private appStore: Store,
+              private countriesService: CountriesService) {
     super(initialState);
     this.loadCountries();
+    this.handleSearchPhrase(this.appStore.select(appSelectors.selectSearchPhrase));
   }
 
   readonly sortCountries = this.effect<SortEvent>(
@@ -97,7 +101,7 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
       tap(() => this.patchState({countriesLoading: true})),
       exhaustMap(([, filters]) => this.countriesService.getCountries$(filters).pipe(
         tapResponse({
-          next: (countries) => this.updateCountries(countries),
+          next: (countries) => this.patchState({countries}),
           error: () => {
             throw new Error('Implement Errors!');
           },
@@ -107,8 +111,20 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     )
   );
 
+  private readonly handleSearchPhrase = this.effect<string>(
+    (searchPhrase$) => searchPhrase$.pipe(
+      tap(searchPhrase => this.updateSearchPhrase(searchPhrase))
+    )
+  );
+
   private selectFilters$ = this.select((state) => state.filters);
 
-  private updateCountries = this.updater((state: CountriesPageState, countries: CountryRecord[]) => ({...state, countries}));
+  private updateSearchPhrase = this.updater((state: CountriesPageState, searchPhrase: string) => ({
+    ...state,
+    filters: {
+      ...state.filters,
+      searchPhrase
+    }
+  }));
 
 }

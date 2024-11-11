@@ -1,0 +1,11 @@
+<span class="p-float-label p-input-icon-right">
+  <input id="search" type="text" pInputText
+         placeholder="Enter at least {{ searchByNumberOfCharacters }} characters"
+         [(ngModel)]="value" (input)="onSearch()"/>
+
+  <label for="search">Search...</label>
+
+  @if (value) {
+    <i class="pi pi-times cursor-pointer" (click)="onClearSearch()"></i>
+  }
+</span>

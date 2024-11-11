@@ -16,4 +16,5 @@ export interface CountryRecord {
 
 export interface CountryRecordFilters {
   fields: string[];
+  searchPhrase: string;
 }

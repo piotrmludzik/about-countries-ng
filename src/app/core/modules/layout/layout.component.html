@@ -1,9 +1,15 @@
 <div class="top-bar">
-  <div class="flex flex-column md:flex-row align-items-start md:justify-content-between">
-    <div class="flex align-items-center gap-2">
-      <img src="world.svg" width="25rem" height="25rem" alt="world logo"/>
-      <div class="font-medium text-3xl text-700">About countries</div>
+  <div class="flex flex-column sm:flex-row gap-5 p-fluid">
+    <!-- TODO: divide the code into smaller parts -->
+    <div class="flex-grow-1 flex flex-column md:flex-row align-items-start md:justify-content-between">
+      <div class="flex align-items-center gap-2">
+        <img src="world.svg" width="25rem" height="25rem" alt="world logo"/>
+        <div class="font-medium text-3xl text-700 white-space-nowrap">About countries</div>
+      </div>
     </div>
+    <!---------------------------------------------->
+
+    <acn-layout-toolbox (search)="onSearch($event)"/>
   </div>
 </div>
 

@@ -1,14 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { SortEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { Column } from '../../../../shared/models';
 import { countriesFields } from '../../constants/countries-fields.model';
-import { CountryRecord } from '../../models/country-record.model';
+import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
 
 @Component({
   selector: 'acn-countries-table',
   templateUrl: './countries-table.component.html'
 })
 export class CountriesTableComponent {
+
+  @ViewChild('countriesTable') private readonly countriesTable!: Table;
 
   protected readonly countriesFields = countriesFields;
 
@@ -17,5 +20,12 @@ export class CountriesTableComponent {
   @Input() sortField!: string;
 
   @Output() sortData = new EventEmitter<SortEvent>();
+
+  @Input()
+  set filters(filters: CountryRecordFilters) {
+    this.countriesTable?.clear();
+
+    !!filters.searchPhrase && this.countriesTable.filterGlobal(filters.searchPhrase, 'contains');
+  }
 
 }
