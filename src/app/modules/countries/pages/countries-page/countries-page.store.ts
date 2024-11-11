@@ -15,13 +15,14 @@ export interface CountriesPageState {
 }
 
 const defaultColumns: Column[] = [
-  {field: countriesFields.name, header: 'Name'},
-  {field: countriesFields.continents, header: 'Continents'},
-  {field: countriesFields.area, header: 'Area'},
-  {field: countriesFields.population, header: 'Population'},
-  {field: countriesFields.capital, header: 'Capital'},
-  {field: countriesFields.languages, header: 'Languages'},
-  {field: countriesFields.timezones, header: 'Timezones'}
+  {field: countriesFields.numbering, header: ''},
+  {field: countriesFields.name, header: 'Name', sortable: true},
+  {field: countriesFields.continents, header: 'Continents', sortable: true},
+  {field: countriesFields.area, header: 'Area', sortable: true},
+  {field: countriesFields.population, header: 'Population', sortable: true},
+  {field: countriesFields.capital, header: 'Capital', sortable: true},
+  {field: countriesFields.languages, header: 'Languages', sortable: true},
+  {field: countriesFields.timezones, header: 'Timezones', sortable: true}
 ];
 const defaultFields = Object.keys(countriesFields);
 const initialState: CountriesPageState = {

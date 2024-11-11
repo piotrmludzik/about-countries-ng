@@ -7,11 +7,14 @@
     </tr>
   </ng-template>
 
-  <ng-template pTemplate="body" let-records let-columns="columns">
+  <ng-template pTemplate="body" let-records let-rowIndex="rowIndex" let-columns="columns">
     <tr>
       @for (col of columns; track col.field) {
         <td>
           @switch (col.field) {
+            @case (countriesFields.numbering) {
+              {{ rowIndex + 1 }}
+            }
             @case (countriesFields.name) {
               {{ records[col.field].common }}
             }
