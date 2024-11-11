@@ -21,11 +21,17 @@
                 <span>{{ records[countriesFields.name].common }}</span>
               </div>
             }
+            @case (countriesFields.continents) {
+              {{ records[col.field] | stringList }}
+            }
             @case (countriesFields.area) {
               {{ records[col.field] | area }}
             }
             @case (countriesFields.population) {
               {{ records[col.field] | number }}
+            }
+            @case (countriesFields.capital) {
+              {{ records[col.field] | stringList }}
             }
             @case (countriesFields.languages) {
               {{ records[col.field] | languageList }}

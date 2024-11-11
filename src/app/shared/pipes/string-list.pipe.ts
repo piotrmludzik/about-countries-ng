@@ -9,11 +9,11 @@ export class StringListPipe implements PipeTransform {
 
   private readonly listSeparator = inject(tokens.appConfig).listSeparator;
 
-  transform(list: string[], separator: string = this.listSeparator): string {
+  transform(list: string[]): string {
     if (!list || list.length === 0) return '';
     if (list.length === 1) return list[0];
 
-    return list.slice(0, -1).join(`${separator} `);
+    return list.join(`${this.listSeparator} `);
   }
 
 }
