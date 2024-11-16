@@ -4,7 +4,8 @@ import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { SortEvent } from 'primeng/api';
 import { exhaustMap, tap } from 'rxjs';
 import { Column, SortOrder } from '../../../../shared/models';
-import { countriesFields } from '../../constants/countries-fields.model';
+import { countriesColumns } from '../../constants/countries-columns.const';
+import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
 import { CountriesService } from '../../services/countries.service';
 
@@ -16,58 +17,14 @@ export interface CountriesPageState {
   filters: CountryRecordFilters;
 }
 
-const defaultColumns: Column[] = [
-  {
-    field: countriesFields.numbering,
-    header: ''
-  },
-  {
-    field: countriesFields.name,
-    header: 'Name',
-    sortFn: (a: CountryRecord, b: CountryRecord) => a.name.common.localeCompare(b.name.common)
-  },
-  {
-    field: countriesFields.continents,
-    header: 'Continents',
-    sortFn: (a: CountryRecord, b: CountryRecord) => {
-      if (a.continents.length > 1 && b.continents.length === 1) return 1;
-      if (a.continents.length === 1 && b.continents.length > 1) return -1;
-
-      return a.continents[0].localeCompare(b.continents[0]);
-    }
-  },
-  {
-    field: countriesFields.area,
-    header: 'Area',
-    sortFn: (a: CountryRecord, b: CountryRecord) => a.area - b.area
-  },
-  {
-    field: countriesFields.population,
-    header: 'Population',
-    sortFn: (a: CountryRecord, b: CountryRecord) => a.population - b.population
-  },
-  {
-    field: countriesFields.capital,
-    header: 'Capital'
-  },
-  {
-    field: countriesFields.languages,
-    header: 'Languages'
-  },
-  {
-    field: countriesFields.timezones,
-    header: 'Timezones'
-  }
-];
-const defaultFields = Object.keys(countriesFields);
 const initialState: CountriesPageState = {
-  columns: defaultColumns,
+  columns: countriesColumns,
   countries: [],
   countriesLoading: false,
   sortField: countriesFields.name,
   filters: {
-    fields: defaultFields
-  }
+    fields: Object.keys(countriesFields)
+  } as CountryRecordFilters
 };
 
 @Injectable()

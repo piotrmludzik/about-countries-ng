@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SortEvent } from 'primeng/api';
 import { Column } from '../../../../shared/models';
-import { countriesFields } from '../../constants/countries-fields.model';
+import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord } from '../../models/country-record.model';
 
 @Component({
