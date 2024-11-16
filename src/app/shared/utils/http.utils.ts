@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { Dictionary } from '../../shared/models';
+import { Dictionary } from '../models';
 
 export class HttpUtils {
 

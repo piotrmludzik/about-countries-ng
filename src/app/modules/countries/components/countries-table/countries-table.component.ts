@@ -14,6 +14,7 @@ export class CountriesTableComponent {
 
   @Input() columns!: Column[];
   @Input() data!: CountryRecord[];
+  @Input() dataLoading!: boolean;
   @Input() sortField!: string;
 
   @Output() sortData = new EventEmitter<SortEvent>();

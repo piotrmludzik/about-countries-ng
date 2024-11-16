@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { appActions } from '../../store/app.actions';
+import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'acn-layout',
@@ -6,4 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
+
+  private readonly store: Store<AppState> = inject(Store);
+
+  onSearchChange(searchPhrase: string): void {
+    this.store.dispatch(appActions.setSearchPhrase({searchPhrase}));
+  }
+
 }

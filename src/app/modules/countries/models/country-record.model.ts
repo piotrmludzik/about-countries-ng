@@ -2,7 +2,7 @@ import { CountryNames } from './country.model';
 
 export interface CountryRecord {
   area: number;
-  capital: string;
+  capital: string[];
   cca2: string;
   cca3: string;
   continents: string[];
@@ -15,5 +15,5 @@ export interface CountryRecord {
 }
 
 export interface CountryRecordFilters {
-  fields: string[];
+  searchPhrase: string;
 }

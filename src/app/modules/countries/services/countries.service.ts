@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tokens } from '../../../core/constants/tokens.const';
+import { Dictionary } from '../../../shared/models';
 import { HttpUtils } from '../../../shared/utils';
-import { CountryRecord, CountryRecordFilters } from '../models/country-record.model';
+import { CountryRecord } from '../models/country-record.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CountriesService {
     getAll: `${this.apiUrl}/all`
   };
 
-  getCountries$(filters: CountryRecordFilters): Observable<CountryRecord[]> {
+  getCountries$(filters: Dictionary<string[]>): Observable<CountryRecord[]> {
     const params = HttpUtils.buildHttpParams(filters);
     return this.httpClient.get<CountryRecord[]>(this.url.getAll, {params});
   }

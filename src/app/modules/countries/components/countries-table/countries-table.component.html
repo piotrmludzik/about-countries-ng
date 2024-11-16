@@ -1,5 +1,6 @@
 <p-table [columns]="columns"
          [value]="data"
+         [loading]="dataLoading"
          [sortField]="sortField"
          (sortFunction)="sortData.emit($event)"
          [customSort]="true">
