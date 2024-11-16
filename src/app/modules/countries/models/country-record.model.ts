@@ -15,5 +15,6 @@ export interface CountryRecord {
 }
 
 export interface CountryRecordFilters {
+  continents: string[] | null;
   searchPhrase: string;
 }

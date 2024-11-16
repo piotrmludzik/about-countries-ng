@@ -39,6 +39,7 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     super(initialState);
     this.loadCountries();
     this.handleFilters(this.selectCountriesAndFilters$);
+    this.handleContinentsFilter(this.appStore.select(appSelectors.selectContinentsFilter));
     this.handleSearchPhrase(this.appStore.select(appSelectors.selectSearchPhrase));
   }
 
@@ -84,6 +85,14 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
             Object.values(country.languages).some(languageName => languageName.toLowerCase().includes(searchPhraseLower)));
         }
 
+        if (data.filters.continents && !!data.filters.continents.length) {
+          filteredCountries = filteredCountries.filter(country =>
+            country.continents.some(continent =>
+              data.filters.continents?.some(filterContinent => continent.toLowerCase() === filterContinent.toLowerCase())
+            )
+          );
+        }
+
         return of(filteredCountries);
       }),
       tap((filteredCountries) => this.patchState({filteredCountries})),
@@ -93,7 +102,13 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
 
   private readonly handleSearchPhrase = this.effect<string>(
     (searchPhrase$) => searchPhrase$.pipe(
-      tap(searchPhrase => this.updateSearchPhrase(searchPhrase))
+      tap(searchPhrase => this.updateFilter({key: 'searchPhrase', value: searchPhrase}))
+    )
+  );
+
+  private readonly handleContinentsFilter = this.effect<string[] | null>(
+    (continentsFilter$) => continentsFilter$.pipe(
+      tap(continentsFilter => this.updateFilter({key: 'continents', value: continentsFilter}))
     )
   );
 
@@ -108,11 +123,11 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     })
   );
 
-  private updateSearchPhrase = this.updater((state: CountriesPageState, searchPhrase: string) => ({
+  private updateFilter = this.updater((state: CountriesPageState, {key, value}: { key: string, value: any }) => ({
     ...state,
     filters: {
       ...state.filters,
-      searchPhrase
+      [key]: value
     }
   }));
 

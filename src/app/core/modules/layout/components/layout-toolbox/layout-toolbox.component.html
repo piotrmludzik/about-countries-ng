@@ -1,3 +1,16 @@
 <div class="flex flex-column sm:flex-row gap-3">
+  <p-floatLabel>
+    <p-multiSelect
+      inputId="continents-filter"
+      [options]="continentsOptions"
+      placeholder="Select continents"
+      [showClear]="true"
+      [showHeader]="false"
+      styleClass="sm:w-14rem"
+      (onChange)="continentsChange.emit($event.value)"
+      (onClear)="continentsChange.emit(null)"/>
+    <label for="continents-filter">Filter by continents</label>
+  </p-floatLabel>
+
   <acn-input-search class="sm:max-w-14rem" (valueChange)="searchChange.emit($event)"/>
 </div>
