@@ -1,0 +1,6 @@
+<table class="flex-grow-1">
+  <acn-table-details-row title="Start of week" [data]="startOfWeek" titleClass="w-8rem" />
+  <acn-table-details-row title="Postal code format" [data]="postalCode?.format | emptyValue" titleClass="w-8rem" />
+  <acn-table-details-row title="Traffic side" [data]="carInfo.side" titleClass="w-8rem" />
+  <acn-table-details-row title="License plates" [data]="carInfo.signs | stringList | emptyValue" titleClass="w-8rem" />
+</table>

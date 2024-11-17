@@ -1,11 +1,14 @@
 @if (componentState | async; as componentState) {
   @if (componentState.countriesLoading) {
-    <acn-skeleton-table [columns]="componentState.columns"/>
+    <acn-skeleton-table [columns]="componentState.columns" />
   } @else {
     <acn-countries-table [columns]="componentState.columns"
                          [data]="componentState.filteredCountries"
                          [dataLoading]="componentState.filteredCountriesLoading"
+                         [countriesDetails]="componentState.countriesDetails"
+                         [countriesDetailsLoading]="componentState.countriesDetailsLoading"
                          [sortField]="componentState.sortField"
-                         (sortData)="onSortData($event)"/>
+                         (rowExpand)="onGetCountryDetails($event)"
+                         (sortData)="onSortData($event)" />
   }
 }

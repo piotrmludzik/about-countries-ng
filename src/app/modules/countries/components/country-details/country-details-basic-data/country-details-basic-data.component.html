@@ -1,0 +1,8 @@
+<table class="flex-grow-1">
+  <acn-table-details-row title="Official name" [data]="officialName" titleClass="w-8rem" />
+  <acn-table-details-row title="Capital" [data]="capital | emptyValue" titleClass="w-8rem" />
+  <acn-table-details-row title="Population" [data]="(population | number) + ' people'" titleClass="w-8rem" />
+  <acn-table-details-row title="Area" [data]="area | area" titleClass="w-8rem" />
+  <acn-table-details-row title="Languages" [data]="languages | languageList | emptyValue" titleClass="w-8rem" />
+  <acn-table-details-row title="Currencies" [data]="currencies | currenciesList | emptyValue" titleClass="w-8rem" />
+</table>

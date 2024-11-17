@@ -1,0 +1,14 @@
+<div class="flex justify-content-between align-content-center">
+  <div class="flex gap-2">
+    <span class="text-5xl font-medium">{{ commonName }}</span>
+    <p-tag [severity]="independent ? 'success' : 'danger'"
+           [value]="independent ? 'Independent' : 'Subordinate'"
+           styleClass="font-light" />
+  </div>
+
+  <div class="flex align-items-end gap-1 text-3xl font-light">
+    <span pTooltip="Cca2 code" tooltipPosition="top" showDelay="500" hideDelay="200">{{ cca2 }}</span>
+    <span>/</span>
+    <span pTooltip="Cca3 code" tooltipPosition="top" showDelay="500" hideDelay="200">{{ cca3 }}</span>
+  </div>
+</div>

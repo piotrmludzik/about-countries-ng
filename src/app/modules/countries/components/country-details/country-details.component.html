@@ -1,0 +1,48 @@
+@if (country) {
+  <div class="flex gap-5">
+    <div class="flex flex-column gap-5 w-30rem">
+      <img [src]="country.flags.svg"
+           alt="Flag of {{country.name.common}}"
+           pTooltip="Flag of {{country.name.common}}"
+           [showDelay]="tooltipDelay"
+           class="border-1 border-gray-100" />
+      <img [src]="country.coatOfArms.svg"
+           alt="Coat of arms of {{country.name.common}}"
+           pTooltip="Coat of arms of {{country.name.common}}"
+           [showDelay]="tooltipDelay" />
+    </div>
+
+    <div class="flex-grow-1 flex flex-column">
+      <acn-country-details-header [commonName]="country.name.common"
+                                  [independent]="country.independent"
+                                  [cca2]="country.cca2"
+                                  [cca3]="country.cca3" />
+
+      <p-divider styleClass="text-xs">Basic data</p-divider>
+
+      <acn-country-details-basic-data [officialName]="country.name.official"
+                                      [capital]="country.capital ? country.capital[0] : ''"
+                                      [population]="country.population"
+                                      [area]="country.area"
+                                      [languages]="country.languages"
+                                      [currencies]="country.currencies" />
+
+      <p-divider styleClass="text-xs mt-6">Geography</p-divider>
+
+      <acn-country-details-geography-data [continents]="country.continents"
+                                          [region]="country.region"
+                                          [subregion]="country.subregion"
+                                          [coordinates]="country.latlng"
+                                          [landlocked]="country.landlocked"
+                                          [borders]="country.borders"
+                                          [googleMapsLink]="country.maps.googleMaps"
+                                          [timezones]="country.timezones" />
+
+      <p-divider styleClass="text-xs mt-6">Fun facts</p-divider>
+
+      <acn-country-details-fun-facts [startOfWeek]="country.startOfWeek"
+                                     [postalCode]="country.postalCode"
+                                     [carInfo]="country.car" />
+    </div>
+  </div>
+}

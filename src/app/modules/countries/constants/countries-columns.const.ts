@@ -4,10 +4,6 @@ import { countriesFields } from './countries-fields.const';
 
 export const countriesColumns: Column[] = [
   {
-    field: countriesFields.numbering,
-    header: ''
-  },
-  {
     field: countriesFields.name,
     header: 'Name',
     sortFn: (a: CountryRecord, b: CountryRecord) => a.name.common.localeCompare(b.name.common)

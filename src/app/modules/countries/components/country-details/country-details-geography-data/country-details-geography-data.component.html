@@ -1,0 +1,31 @@
+<div>
+  <table class="flex-grow-1">
+    <acn-table-details-row title="Continent" [data]="continents | stringList" titleClass="w-8rem" />
+    <acn-table-details-row title="Region" [data]="region" titleClass="w-8rem" />
+    <acn-table-details-row title="Subregion" [data]="subregion | emptyValue" titleClass="w-8rem" />
+    <acn-table-details-row title="Coordinates:" [data]="coordinates | coordinates" titleClass="w-8rem" />
+
+    <tr>
+      <td class="{{ tableDetailsRowStyle.title }} w-8rem">Google Maps:</td>
+      <td [class]="tableDetailsRowStyle.data">
+        <a href="{{googleMapsLink}}" target="_blank">{{ googleMapsLink }}</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="{{ tableDetailsRowStyle.title }} w-8rem">Borders:</td>
+      <td [class]="tableDetailsRowStyle.data">
+        @if (!!borders) {
+          @for (borderCountry of borders; track borderCountry.cca3; let last = $last) {
+            {{ borderCountry.flag }} {{ borderCountry.name.common + (last | separator) }}
+          }
+        } @else {
+          {{ '' | emptyValue }}
+        }
+      </td>
+    </tr>
+
+    <acn-table-details-row title="Access to the sea" [data]="!landlocked ? 'Yes' : 'No'" titleClass="w-8rem" />
+    <acn-table-details-row title="Timezone:" [data]="timezones | stringList" titleClass="w-8rem" />
+  </table>
+</div>

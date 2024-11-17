@@ -1,9 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { Button } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
+import { Ripple } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
-import { SkeletonTableComponent } from '../../shared/components/skeleton-table/skeleton-table.component';
-import { AreaPipe, LanguageListPipe, StringListPipe } from '../../shared/pipes';
+import { TagModule } from 'primeng/tag';
+import { TooltipModule } from 'primeng/tooltip';
+import { SkeletonTableComponent, TableDetailsRowComponent } from '../../shared/components';
+import { AreaPipe, CoordinatesPipe, CurrenciesListPipe, EmptyValuePipe, LanguageListPipe, SeparatorPipe, StringListPipe } from '../../shared/pipes';
 import { countryComponents } from './components';
 import { countryRoutes } from './countries.routes';
 import { countryPages } from './pages';
@@ -18,13 +23,23 @@ import { countryPages } from './pages';
     CommonModule,
 
     // PrimeNg
+    Button,
+    DividerModule,
+    Ripple,
     TableModule,
+    TagModule,
+    TooltipModule,
 
     // Project
     AreaPipe,
+    CoordinatesPipe,
+    CurrenciesListPipe,
+    EmptyValuePipe,
     LanguageListPipe,
+    SeparatorPipe,
     SkeletonTableComponent,
-    StringListPipe
+    StringListPipe,
+    TableDetailsRowComponent
   ],
   providers: [
     provideRouter(countryRoutes)

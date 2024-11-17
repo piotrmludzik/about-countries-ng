@@ -13,6 +13,10 @@ export class CountriesPageComponent {
 
   protected readonly componentState = this.componentStore.state$;
 
+  onGetCountryDetails(cca3: string): void {
+    this.componentStore.getCountryDetails(cca3);
+  }
+
   onSortData(event: SortEvent): void {
     this.componentStore.sortCountries(event);
   }

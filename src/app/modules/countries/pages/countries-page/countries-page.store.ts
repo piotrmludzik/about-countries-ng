@@ -3,13 +3,14 @@ import { ComponentStore } from '@ngrx/component-store';
 import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { SortEvent } from 'primeng/api';
-import { exhaustMap, filter, of, switchMap, tap } from 'rxjs';
+import { exhaustMap, filter, mergeMap, of, switchMap, tap } from 'rxjs';
 import { appActions } from '../../../../core/store/app.actions';
 import { appSelectors } from '../../../../core/store/app.selectors';
-import { Column, CountriesStats, SortOrder } from '../../../../shared/models';
+import { Column, CountriesStats, Dictionary, SortOrder } from '../../../../shared/models';
 import { countriesColumns } from '../../constants/countries-columns.const';
 import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
+import { Country, CountryDetails } from '../../models/country.model';
 import { CountriesService } from '../../services/countries.service';
 
 export interface CountriesPageState {
@@ -18,6 +19,8 @@ export interface CountriesPageState {
   countriesLoading: boolean;
   filteredCountries: CountryRecord[];
   filteredCountriesLoading: boolean;
+  countriesDetails: Dictionary<CountryDetails>;
+  countriesDetailsLoading: Dictionary<boolean>;
   sortField: string;
   filters: CountryRecordFilters;
 }
@@ -28,6 +31,8 @@ const initialState: CountriesPageState = {
   countriesLoading: false,
   filteredCountries: [],
   filteredCountriesLoading: false,
+  countriesDetails: {} as Dictionary<CountryDetails>,
+  countriesDetailsLoading: {} as Dictionary<boolean>,
   sortField: countriesFields.name,
   filters: {} as CountryRecordFilters
 };
@@ -44,6 +49,21 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     this.handleSearchPhrase(this.appStore.select(appSelectors.selectSearchPhrase));
     this.handleStats(this.selectFilteredCountries$);
   }
+
+  readonly getCountryDetails = this.effect<string>(
+    (cca3$) => cca3$.pipe(
+      tap((cca3) => this.updateCountryDetailsLoading({cca3, loading: true})),
+      mergeMap((cca3) => this.countriesService.getCountryDetails$(cca3).pipe(
+        tapResponse({
+          next: (countries) => this.updateCountryDetails({cca3, country: countries[0]}),
+          error: () => {
+            throw new Error('Implement Errors!');
+          },
+          finalize: () => this.updateCountryDetailsLoading({cca3, loading: false})
+        })
+      ))
+    )
+  );
 
   readonly sortCountries = this.effect<SortEvent>(
     (event$) => event$.pipe(
@@ -131,8 +151,11 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
   );
 
   private selectFilteredCountries$ = this.select((state) => state.filteredCountries);
+
   private selectCountries$ = this.select((state) => state.countries);
+
   private selectFilters$ = this.select((state) => state.filters);
+
   private selectCountriesAndFilters$ = this.select(
     this.selectCountries$,
     this.selectFilters$,
@@ -141,6 +164,34 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
       filters
     })
   );
+
+  private updateCountryDetails = this.updater((state: CountriesPageState, {cca3, country}: { cca3: string, country: Country }) => {
+    const borders = country.borders?.map(borderCca3 => {
+      const borderCountry = state.countries.find(countryFromStore => countryFromStore.cca3 === borderCca3)!;
+
+      return {
+        cca3: borderCca3,
+        name: borderCountry.name,
+        flag: borderCountry.flag
+      };
+    });
+
+    return {
+      ...state,
+      countriesDetails: {
+        ...state.countriesDetails,
+        [cca3]: {...country, borders}
+      }
+    };
+  });
+
+  private updateCountryDetailsLoading = this.updater((state: CountriesPageState, {cca3, loading}: { cca3: string, loading: boolean }) => ({
+    ...state,
+    countriesDetailsLoading: {
+      ...state.countriesDetailsLoading,
+      [cca3]: loading
+    }
+  }));
 
   private updateFilter = this.updater((state: CountriesPageState, {key, value}: { key: string, value: any }) => ({
     ...state,
