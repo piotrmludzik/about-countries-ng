@@ -18,21 +18,36 @@ The project structure will be documented here to illustrate its modular and orga
 
 ```plaintext
 src/
-├── public/
-└── app/
-│   ├── components/    # Key components for displaying country data
-│   ├── services/      # Services managing API requests and state updates
-│   └── ...
+├── example              # Examples for development purposes
+├── public               # Assets folder
+│   └── styles           # Global styles
+└── app                  # Application code
+│   ├── core             # Things that last the life of the app
+│   │   ├── constants
+│   │   ├── models
+│   │   ├── modules
+│   │   └── store
+│   ├── modules          # Things related to business features
+│   └── shared           # Things shared between business functionalities
+│       ├── components 
+│       ├── constants
+│       ├── models
+│       ├── pipes
+│       └── utils
+└── tools                # Tools for development purposes
 ```
 
 ## Key Features
+
 * **Up-to-Date Country List:** Displays a comprehensive list of all countries, including essential information such as population, region, and flag.
 * **Detailed Country Information:** Allows users to view in-depth details for selected countries, including area, population, time zones, currencies, and neighboring countries.
 * **Search and Filter Options:** Provides options to locate countries by name, region, or specific attributes.
 * **Country Comparison:** Enables side-by-side comparisons of selected countries, making it easier to analyze and contrast their data.
+
 These features create an engaging, informative experience that facilitates exploration of global data.
 
 ## Challenges & Solutions
+
 During development, two main challenges were addressed:
 
 1. Creating an Intuitive and Modern User Interface: Using PrimeNG components allowed for a visually appealing, user-friendly interface while maintaining consistency and responsiveness.
