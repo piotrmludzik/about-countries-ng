@@ -1,12 +1,17 @@
 import { createAction, props } from '@ngrx/store';
+import { CountriesStats } from '../../shared/models';
 
 export const appActions = {
+  setStats: createAction(
+    '[Application] Set stats area',
+    props<{ stats: CountriesStats }>()
+  ),
   setContinentsFilter: createAction(
-    '[Filter] Filter continents',
+    '[Application] Set filter continents',
     props<{ continentsFilter: string[] | null }>()
   ),
   setSearchPhrase: createAction(
-    '[Search] Set Search Phrase',
+    '[Application] Set Search Phrase',
     props<{ searchPhrase: string }>()
   )
 };

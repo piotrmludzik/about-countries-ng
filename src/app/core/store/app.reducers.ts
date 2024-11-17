@@ -4,6 +4,10 @@ import { initialAppState } from './app.state';
 
 export const appReducers = createReducer(
   initialAppState,
+  on(appActions.setStats, (state, {stats}) => ({
+    ...state,
+    stats
+  })),
   on(appActions.setContinentsFilter, (state, {continentsFilter}) => ({
     ...state,
     continentsFilter

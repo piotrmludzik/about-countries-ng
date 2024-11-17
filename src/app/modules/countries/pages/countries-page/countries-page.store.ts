@@ -4,8 +4,9 @@ import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { SortEvent } from 'primeng/api';
 import { exhaustMap, filter, of, switchMap, tap } from 'rxjs';
+import { appActions } from '../../../../core/store/app.actions';
 import { appSelectors } from '../../../../core/store/app.selectors';
-import { Column, SortOrder } from '../../../../shared/models';
+import { Column, CountriesStats, SortOrder } from '../../../../shared/models';
 import { countriesColumns } from '../../constants/countries-columns.const';
 import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
@@ -41,6 +42,7 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     this.handleFilters(this.selectCountriesAndFilters$);
     this.handleContinentsFilter(this.appStore.select(appSelectors.selectContinentsFilter));
     this.handleSearchPhrase(this.appStore.select(appSelectors.selectSearchPhrase));
+    this.handleStats(this.selectFilteredCountries$);
   }
 
   readonly sortCountries = this.effect<SortEvent>(
@@ -112,6 +114,23 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
     )
   );
 
+  private readonly handleStats = this.effect<CountryRecord[]>(
+    (filteredCountries$) => filteredCountries$.pipe(
+      tap(filteredCountries => {
+        let stats: CountriesStats = {area: 0, countries: 0, population: 0};
+
+        stats.countries = filteredCountries.length;
+        filteredCountries.forEach(country => {
+          stats.area += country.area;
+          stats.population += country.population;
+        });
+
+        this.appStore.dispatch(appActions.setStats({stats}));
+      })
+    )
+  );
+
+  private selectFilteredCountries$ = this.select((state) => state.filteredCountries);
   private selectCountries$ = this.select((state) => state.countries);
   private selectFilters$ = this.select((state) => state.filters);
   private selectCountriesAndFilters$ = this.select(

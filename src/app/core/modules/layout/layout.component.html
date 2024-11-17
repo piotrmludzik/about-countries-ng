@@ -1,19 +1,15 @@
 <div class="top-bar">
-  <div class="flex flex-column sm:flex-row gap-5 p-fluid">
-    <!-- TODO: divide the code into smaller parts -->
-    <div class="flex-grow-1 flex flex-column md:flex-row align-items-start md:justify-content-between">
-      <div class="flex align-items-center gap-2">
-        <img src="world.svg" width="25rem" height="25rem" alt="world logo"/>
-        <div class="font-medium text-3xl text-700 white-space-nowrap">About countries</div>
-      </div>
-    </div>
-    <!---------------------------------------------->
+  @if (stats$ | async; as stats) {
+    <div class="flex flex-column md:flex-row row-gap-5 column-gap-1 p-3 md:px-5 md:py-3">
+      <acn-layout-bar [stats]="stats"/>
 
-    <acn-layout-toolbox (continentsChange)="onContinentsChange($event)"
-                        (searchChange)="onSearchChange($event)"/>
-  </div>
+      <acn-layout-toolbox (continentsChange)="onContinentsChange($event)"
+                          (searchChange)="onSearchChange($event)"/>
+    </div>
+  }
+
 </div>
 
-<div class="content">
+<div class="p-3 md:px-5 md:py-3">
   <router-outlet/>
 </div>
