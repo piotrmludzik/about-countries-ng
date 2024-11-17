@@ -17,5 +17,9 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/countries/countries.module').then(w => w.CountriesModule)
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
