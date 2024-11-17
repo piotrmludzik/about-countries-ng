@@ -1,16 +1,16 @@
-<div class="flex flex-column sm:flex-row gap-3">
-  <p-floatLabel>
+<div class="flex flex-column sm:flex-row sm:justify-content-between align-items-end gap-3 p-fluid">
+  <p-floatLabel class="w-full">
     <p-multiSelect
       inputId="continents-filter"
       [options]="continentsOptions"
       placeholder="Select continents"
       [showClear]="true"
       [showHeader]="false"
-      styleClass="sm:w-14rem"
+      styleClass="lg:max-w-15rem"
       (onChange)="continentsChange.emit($event.value)"
       (onClear)="continentsChange.emit(null)"/>
     <label for="continents-filter">Filter by continents</label>
   </p-floatLabel>
 
-  <acn-input-search class="sm:max-w-14rem" (valueChange)="searchChange.emit($event)"/>
+  <acn-input-search class="w-full lg:max-w-15rem" (valueChange)="searchChange.emit($event)"/>
 </div>

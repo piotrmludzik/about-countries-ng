@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputSearchComponent } from '../../../shared/components';
+import { AreaPipe } from '../../../shared/pipes';
 import { layoutComponents } from './components';
 import { LayoutComponent } from './layout.component';
 
@@ -21,6 +22,7 @@ import { LayoutComponent } from './layout.component';
     MultiSelectModule,
 
     // Project
+    AreaPipe,
     FloatLabelModule,
     InputSearchComponent
   ]
