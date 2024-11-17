@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { TableModule } from 'primeng/table';
+import { SkeletonTableComponent } from '../../shared/components/skeleton-table/skeleton-table.component';
 import { AreaPipe, LanguageListPipe, StringListPipe } from '../../shared/pipes';
 import { countryComponents } from './components';
 import { countryRoutes } from './countries.routes';
@@ -22,6 +23,7 @@ import { countryPages } from './pages';
     // Project
     AreaPipe,
     LanguageListPipe,
+    SkeletonTableComponent,
     StringListPipe
   ],
   providers: [

@@ -1,0 +1,18 @@
+<p-table [columns]="columns" [value]="virtualData">
+  <ng-template pTemplate="header">
+    <tr>
+      @for (col of columns; track col.field) {
+        <th class="text-200">{{ col.header }}</th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowIndex="rowIndex">
+    <tr>
+      @for (col of columns; track col.field) {
+        <td class="border-transparent">
+          <p-skeleton styleClass="opacity-{{10 - rowIndex}}0"/>
+        </td>
+      }
+    </tr>
+  </ng-template>
+</p-table>
