@@ -53,8 +53,8 @@
                 "input": "public"
               }
             ],
+            "inlineStyleLanguage": "scss",
             "styles": [
-              "public/styles/styles.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -112,6 +112,7 @@
                 "input": "public"
               }
             ],
+            "inlineStyleLanguage": "scss",
             "styles": [
               "src/styles.scss"
             ],
