@@ -4,10 +4,11 @@ import { provideRouter } from '@angular/router';
 import { Button } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { Ripple } from 'primeng/ripple';
+import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
-import { ErrorComponent, SkeletonTableComponent, TableDetailsRowComponent } from '../../shared/components';
+import { SkeletonTableComponent, TableDetailsRowComponent } from '../../shared/components';
 import { AreaPipe, CoordinatesPipe, CurrenciesListPipe, EmptyValuePipe, LanguageListPipe, SeparatorPipe, StringListPipe } from '../../shared/pipes';
 import { countryComponents } from './components';
 import { countryRoutes } from './countries.routes';
@@ -25,8 +26,8 @@ import { countryPages } from './pages';
     // PrimeNg
     Button,
     DividerModule,
-    ErrorComponent,
     Ripple,
+    SkeletonModule,
     TableModule,
     TagModule,
     TooltipModule,

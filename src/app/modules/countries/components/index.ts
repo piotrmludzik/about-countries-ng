@@ -3,6 +3,7 @@ import { CountryDetailsBasicDataComponent } from './country-details/country-deta
 import { CountryDetailsFunFactsComponent } from './country-details/country-details-fun-facts/country-details-fun-facts.component';
 import { CountryDetailsGeographyDataComponent } from './country-details/country-details-geography-data/country-details-geography-data.component';
 import { CountryDetailsHeaderComponent } from './country-details/country-details-header/country-details-header.component';
+import { CountryDetailsSkeletonComponent } from './country-details/country-details-skeleton/country-details-skeleton.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 
 export const countryComponents = [
@@ -11,5 +12,6 @@ export const countryComponents = [
   CountryDetailsComponent,
   CountryDetailsFunFactsComponent,
   CountryDetailsGeographyDataComponent,
-  CountryDetailsHeaderComponent
+  CountryDetailsHeaderComponent,
+  CountryDetailsSkeletonComponent
 ];

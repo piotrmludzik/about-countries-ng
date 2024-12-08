@@ -83,7 +83,8 @@
       <td></td>
 
       <td colspan="10" class="py-5">
-        <acn-country-details [country]="countriesDetails[selectedRecord.cca3]" />
+        <acn-country-details [country]="countriesDetails[selectedRecord.cca3]"
+                             [countryLoading]="countriesDetailsLoading[selectedRecord.cca3]" />
       </td>
     </tr>
   </ng-template>

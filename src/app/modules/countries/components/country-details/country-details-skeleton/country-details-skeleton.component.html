@@ -1,0 +1,24 @@
+<div class="flex gap-5">
+  <div class="flex flex-column gap-5 w-30rem">
+    <p-skeleton width="30rem" height="20rem" />
+    <p-skeleton size="30rem" />
+  </div>
+
+  <div class="flex-grow-1 flex flex-column">
+    <div class="flex gap-3">
+      <p-skeleton height="4rem" class="flex-grow-1" />
+      <p-skeleton size="4rem" />
+    </div>
+
+    <ng-container *ngFor="let i of [].constructor(3)">
+      <p-divider styleClass="mt-6" />
+
+      <div class="flex flex-column gap-2">
+        <div *ngFor="let i of [].constructor(5)" class="flex gap-3">
+          <p-skeleton width="8rem" />
+          <p-skeleton class="flex-grow-1" />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
