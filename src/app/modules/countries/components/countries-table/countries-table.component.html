@@ -18,7 +18,7 @@
         @if (col.sortFn) {
           <th [pSortableColumn]="col.field">
             {{ col.header }}
-            <p-sortIcon [field]="col.field"/>
+            <p-sortIcon [field]="col.field" />
           </th>
         } @else {
           <th>{{ col.header }}</th>
@@ -38,7 +38,7 @@
                   [text]="true"
                   [rounded]="true"
                   [plain]="true"
-                  [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"/>
+                  [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
       </td>
 
       @for (col of columns; track col.field) {
@@ -83,8 +83,14 @@
       <td></td>
 
       <td colspan="10" class="py-5">
-        <acn-country-details [country]="countriesDetails[selectedRecord.cca3]"/>
+        <acn-country-details [country]="countriesDetails[selectedRecord.cca3]" />
       </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="10">No countries found.</td>
     </tr>
   </ng-template>
 </p-table>
