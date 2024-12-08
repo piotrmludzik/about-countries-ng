@@ -1,5 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { tokens } from '../../../../core/constants/tokens.const';
+import { errorMessages } from '../../../../shared/constants';
 import { CountryDetails } from '../../models/country.model';
 
 @Component({
@@ -12,4 +13,5 @@ export class CountryDetailsComponent {
 
   @Input() country!: CountryDetails;
 
+  protected readonly errorMessages = errorMessages;
 }

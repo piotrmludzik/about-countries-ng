@@ -1,0 +1,39 @@
+.p-toast-message-success {
+  .p-toast-summary, .p-toast-message-icon {
+    color: var(--green-700);
+  }
+
+  .p-toast-detail, .p-toast-icon-close {
+    color: var(--green-500);
+  }
+}
+
+.p-toast-message-info {
+  .p-toast-summary, .p-toast-message-icon {
+    color: var(--blue-700);
+  }
+
+  .p-toast-detail, .p-toast-icon-close {
+    color: var(--blue-600);
+  }
+}
+
+.p-toast-message-warn {
+  .p-toast-summary, .p-toast-message-icon {
+    color: var(--orange-700);
+  }
+
+  .p-toast-detail, .p-toast-icon-close {
+    color: var(--orange-600);
+  }
+}
+
+.p-toast-message-error {
+  .p-toast-summary, .p-toast-message-icon {
+    color: var(--pink-700);
+  }
+
+  .p-toast-detail, .p-toast-icon-close {
+    color: var(--pink-600);
+  }
+}

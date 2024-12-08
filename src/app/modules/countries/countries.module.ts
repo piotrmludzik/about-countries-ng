@@ -7,7 +7,7 @@ import { Ripple } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
-import { SkeletonTableComponent, TableDetailsRowComponent } from '../../shared/components';
+import { ErrorComponent, SkeletonTableComponent, TableDetailsRowComponent } from '../../shared/components';
 import { AreaPipe, CoordinatesPipe, CurrenciesListPipe, EmptyValuePipe, LanguageListPipe, SeparatorPipe, StringListPipe } from '../../shared/pipes';
 import { countryComponents } from './components';
 import { countryRoutes } from './countries.routes';
@@ -25,6 +25,7 @@ import { countryPages } from './pages';
     // PrimeNg
     Button,
     DividerModule,
+    ErrorComponent,
     Ripple,
     TableModule,
     TagModule,

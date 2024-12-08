@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 import { LayoutModule } from './core/modules/layout/layout.module';
 
 @Component({
@@ -8,6 +9,9 @@ import { LayoutModule } from './core/modules/layout/layout.module';
   imports: [
     // Angular
     RouterOutlet,
+
+    // PrimeNg
+    ToastModule,
 
     // Project
     LayoutModule

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { concatLatestFrom, tapResponse } from '@ngrx/operators';
@@ -6,7 +7,9 @@ import { SortEvent } from 'primeng/api';
 import { exhaustMap, filter, mergeMap, of, switchMap, tap } from 'rxjs';
 import { appActions } from '../../../../core/store/app.actions';
 import { appSelectors } from '../../../../core/store/app.selectors';
+import { errorMessages } from '../../../../shared/constants';
 import { Column, CountriesStats, Dictionary, SortOrder } from '../../../../shared/models';
+import { NotificationService } from '../../../../shared/services';
 import { countriesColumns } from '../../constants/countries-columns.const';
 import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord, CountryRecordFilters } from '../../models/country-record.model';
@@ -40,8 +43,9 @@ const initialState: CountriesPageState = {
 @Injectable()
 export class CountriesPageStore extends ComponentStore<CountriesPageState> {
 
-  constructor(private appStore: Store,
-              private countriesService: CountriesService) {
+  constructor(private readonly appStore: Store,
+              private readonly countriesService: CountriesService,
+              private readonly notificationService: NotificationService) {
     super(initialState);
     this.loadCountries();
     this.handleFilters(this.selectCountriesAndFilters$);
@@ -56,9 +60,7 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
       mergeMap((cca3) => this.countriesService.getCountryDetails$(cca3).pipe(
         tapResponse({
           next: (countries) => this.updateCountryDetails({cca3, country: countries[0]}),
-          error: () => {
-            throw new Error('Implement Errors!');
-          },
+          error: (error: HttpErrorResponse) => this.notificationService.showError(errorMessages.general, error),
           finalize: () => this.updateCountryDetailsLoading({cca3, loading: false})
         })
       ))
@@ -84,9 +86,7 @@ export class CountriesPageStore extends ComponentStore<CountriesPageState> {
       exhaustMap(() => this.countriesService.getCountries$({fields: Object.keys(countriesFields)}).pipe(
         tapResponse({
           next: (countries) => this.patchState({countries}),
-          error: () => {
-            throw new Error('Implement Errors!');
-          },
+          error: (error: HttpErrorResponse) => this.notificationService.showError(errorMessages.general, error),
           finalize: () => this.patchState({countriesLoading: false})
         })
       ))
