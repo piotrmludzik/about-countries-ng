@@ -13,7 +13,7 @@ export class CountryDetailsGeographyDataComponent {
 
   @Input() continents!: string[];
   @Input() region!: string;
-  @Input() subregion!: string;
+  @Input() subregion?: string;
   @Input() coordinates!: [number, number];
   @Input() googleMapsLink!: string;
   @Input() borders?: Borders[];

@@ -12,7 +12,7 @@
         <p-skeleton width="30rem" height="20rem" />
       }
 
-      @if (country.coatOfArms?.svg) {
+      @if (country.coatOfArms.svg) {
         <img [src]="country.coatOfArms.svg"
              alt="Coat of arms of {{country.name.common}}"
              pTooltip="Coat of arms of {{country.name.common}}"

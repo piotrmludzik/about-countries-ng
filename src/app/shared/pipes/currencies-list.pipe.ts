@@ -11,7 +11,7 @@ export class CurrenciesListPipe implements PipeTransform {
 
   private readonly separator = inject(tokens.appConfig).listSeparator;
 
-  transform(currencies: Dictionary<Currency>): string {
+  transform(currencies: Dictionary<Currency> | null | undefined): string {
     if (!currencies) return '';
 
     return Object.keys(currencies)

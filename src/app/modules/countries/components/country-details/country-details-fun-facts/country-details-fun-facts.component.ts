@@ -8,7 +8,7 @@ import { CarInfo, PostalCode } from '../../../models/country.model';
 export class CountryDetailsFunFactsComponent {
 
   @Input() startOfWeek!: string;
-  @Input() postalCode!: PostalCode;
-  @Input() carInfo!: CarInfo;
+  @Input() postalCode?: PostalCode;
+  @Input() carInfo?: CarInfo;
 
 }

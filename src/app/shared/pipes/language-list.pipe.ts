@@ -10,7 +10,7 @@ export class LanguageListPipe implements PipeTransform {
 
   private readonly listSeparator = inject(tokens.appConfig).listSeparator;
 
-  transform(language: Dictionary): string {
+  transform(language: Dictionary | null | undefined): string {
     if (!language) return '';
 
     const languageList = Object.keys(language).map(key => language[key]);

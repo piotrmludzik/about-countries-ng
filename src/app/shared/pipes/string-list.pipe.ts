@@ -9,7 +9,7 @@ export class StringListPipe implements PipeTransform {
 
   private readonly listSeparator = inject(tokens.appConfig).listSeparator;
 
-  transform(list: string[]): string {
+  transform(list: string[] | null | undefined): string {
     if (!list || list.length === 0) return '';
     if (list.length === 1) return list[0];
 

@@ -12,7 +12,7 @@ export class CountryDetailsBasicDataComponent {
   @Input() capital!: string;
   @Input() population!: number;
   @Input() area!: number;
-  @Input() languages!: Dictionary;
-  @Input() currencies!: Dictionary<Currency>;
+  @Input() languages?: Dictionary;
+  @Input() currencies?: Dictionary<Currency>;
 
 }
