@@ -1,0 +1,13 @@
+.country-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 2rem;
+}
+
+.flag-column {
+  grid-column: span 5;
+}
+
+.details-column {
+  grid-column: span 7;
+}

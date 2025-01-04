@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { BadgeModule } from 'primeng/badge';
 import { Button } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { Ripple } from 'primeng/ripple';
@@ -13,17 +14,20 @@ import { AreaPipe, CoordinatesPipe, CurrenciesListPipe, EmptyValuePipe, Language
 import { countryComponents } from './components';
 import { countryRoutes } from './countries.routes';
 import { countryPages } from './pages';
+import { countryPipes } from './pipes';
 
 @NgModule({
   declarations: [
     ...countryComponents,
-    ...countryPages
+    ...countryPages,
+    ...countryPipes
   ],
   imports: [
     // Angular
     CommonModule,
 
-    // PrimeNg
+    // PrimeNg,
+    BadgeModule,
     Button,
     DividerModule,
     Ripple,

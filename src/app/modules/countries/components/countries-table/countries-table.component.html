@@ -6,12 +6,13 @@
          [expandedRowKeys]="expandedRows"
          [customSort]="true"
          (sortFunction)="sortData.emit($event)"
+         [scrollable]="false"
+         styleClass="p-datatable-striped"
          (onRowExpand)="rowExpand.emit($event.data.cca3)"
          (onRowCollapse)="rowCollapse.emit($event)">
 
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th></th>
       <th></th>
 
       @for (col of columns; track col.field) {
@@ -29,29 +30,29 @@
 
   <ng-template pTemplate="body" let-records let-rowIndex="rowIndex" let-columns="columns" let-expanded="expanded">
     <tr>
-      <td>{{ rowIndex + 1 }}</td>
-
-      <td class="px-0">
-        <p-button type="button"
-                  pRipple
-                  [pRowToggler]="records"
-                  [text]="true"
-                  [rounded]="true"
-                  [plain]="true"
-                  [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
-      </td>
+      <td class="flex-grow-1 justify-content-center md:text-right">{{ rowIndex + 1 }}</td>
 
       @for (col of columns; track col.field) {
         <td>
           @switch (col.field) {
             @case (countriesFields.name) {
-              <div class="flex flex-nowrap gap-2">
-                <span>{{ records[countriesFields.flag] }}</span>
-                <span>{{ records[countriesFields.name].common }}</span>
+              <div class="flex align-items-center gap-1 md:gap-2">
+                <div class="flex flex-nowrap align-items-center gap-2 title">
+                  <span>{{ records[countriesFields.flag] }}</span>
+                  <span>{{ records[countriesFields.name].common }}</span>
+                </div>
+
+                <p-button type="button"
+                          pRipple
+                          [pRowToggler]="records"
+                          [text]="true"
+                          [rounded]="true"
+                          [plain]="true"
+                          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
               </div>
             }
             @case (countriesFields.continents) {
-              {{ records[col.field] | stringList }}
+              <span class="white-space-nowrap">{{ records[col.field] | stringList }}</span>
             }
             @case (countriesFields.area) {
               {{ records[col.field] | area }}
@@ -63,10 +64,17 @@
               {{ records[col.field] | stringList }}
             }
             @case (countriesFields.languages) {
-              {{ records[col.field] | languageList }}
-            }
-            @case (countriesFields.timezones) {
-              {{ records[col.field] | stringList }}
+              @if ((records[col.field] | countryLanguagesNumbers) <= 3) {
+                {{ records[col.field] | languageList }}
+              } @else {
+                <div class="flex flex-wrap align-items-center row-gap-1 column-gap-2">
+                  <span>{{ records[col.field] | languageList: languageListMode.firstTree }}...</span>
+                  <p-badge value="+{{ (records[col.field] | countryLanguagesNumbers) - 3 }}"
+                           pTooltip="{{ records[col.field] | languageList: languageListMode.rest }}"
+                           tooltipPosition="top"
+                           [showDelay]="tooltipDelay" />
+                </div>
+              }
             }
             @default {
               {{ records[col.field] }}
@@ -79,10 +87,9 @@
 
   <ng-template pTemplate="rowexpansion" let-selectedRecord>
     <tr>
-      <td></td>
-      <td></td>
+      <td class="hidden md:inline-block"></td>
 
-      <td colspan="10" class="py-5">
+      <td colspan="10" class="py-3 md:py-5">
         <acn-country-details [country]="countriesDetails[selectedRecord.cca3]"
                              [countryLoading]="countriesDetailsLoading[selectedRecord.cca3]" />
       </td>
@@ -91,7 +98,7 @@
 
   <ng-template pTemplate="emptymessage">
     <tr>
-      <td colspan="10">No countries found.</td>
+      <td colspan="11">No countries found.</td>
     </tr>
   </ng-template>
 </p-table>

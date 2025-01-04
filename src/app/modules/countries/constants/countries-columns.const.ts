@@ -35,9 +35,5 @@ export const countriesColumns: Column[] = [
   {
     field: countriesFields.languages,
     header: 'Languages'
-  },
-  {
-    field: countriesFields.timezones,
-    header: 'Timezones'
   }
 ];

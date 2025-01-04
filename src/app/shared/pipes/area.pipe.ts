@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { inject, Pipe, PipeTransform } from '@angular/core';
 import { tokens } from '../../core/constants/tokens.const';
+import { unicode } from '../constants/unicode.const';
 
 @Pipe({
   name: 'area',
@@ -14,7 +15,7 @@ export class AreaPipe implements PipeTransform {
 
   transform(value: number): string {
     const formattedNumber = this.decimalPipe.transform(value, this.digitsInfo);
-    return `${formattedNumber} m²`;
+    return `${formattedNumber}${unicode.nonBreakingSpace}m²`;
   }
 
 }

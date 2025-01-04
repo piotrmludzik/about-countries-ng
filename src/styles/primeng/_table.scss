@@ -1,0 +1,9 @@
+.p-datatable {
+  td {
+    padding: 0.5rem 1rem;
+
+    @include breakpoint-max('md') {
+      padding: 0 0.5rem;
+    }
+  }
+}

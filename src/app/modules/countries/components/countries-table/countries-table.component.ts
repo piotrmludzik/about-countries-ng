@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { SortEvent } from 'primeng/api';
 import { TableRowCollapseEvent } from 'primeng/table';
-import { Column, Dictionary } from '../../../../shared/models';
+import { tokens } from '../../../../core/constants/tokens.const';
+import { Column, Dictionary, LanguageListMode } from '../../../../shared/models';
 import { countriesFields } from '../../constants/countries-fields.const';
 import { CountryRecord } from '../../models/country-record.model';
 import { CountryDetails } from '../../models/country.model';
@@ -12,7 +13,10 @@ import { CountryDetails } from '../../models/country.model';
 })
 export class CountriesTableComponent {
 
+  protected readonly tooltipDelay = inject(tokens.appConfig).tooltipDelay;
+
   protected readonly countriesFields = countriesFields;
+  protected readonly languageListMode = LanguageListMode;
 
   protected expandedRows = {};
 
