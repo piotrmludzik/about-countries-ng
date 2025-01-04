@@ -8,6 +8,5 @@ export const countriesFields = {
   languages: 'languages',
   maps: 'maps',
   name: 'name',
-  population: 'population',
-  timezones: 'timezones'
+  population: 'population'
 };
