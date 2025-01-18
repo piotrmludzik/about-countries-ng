@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
+import { environment } from '../environments/environment';
 import { LayoutModule } from './core/modules/layout/layout.module';
 
 @Component({
@@ -18,5 +20,12 @@ import { LayoutModule } from './core/modules/layout/layout.module';
   ],
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  private titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle(environment.app.name);
+  }
+
 }

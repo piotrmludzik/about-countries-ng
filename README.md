@@ -54,6 +54,7 @@ src/
 │   │       ├── pipes
 │   │       ├── services
 │   │       └── utils
+│   ├── environments         # Application configuration by environment
 │   └── styles               # Global styles
 └── tools                    # Tools for development purposes
 ```
