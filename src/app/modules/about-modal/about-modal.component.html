@@ -1,0 +1,61 @@
+<acn-data-container>
+  <div class="flex align-items-center gap-3">
+    <img src="world.svg" width="82rem" height="82rem" alt="world logo" />
+
+    <div class="flex flex-column">
+      <span class="font-medium text-3xl text-700 text-color-secondary white-space-nowrap">About countries</span>
+
+      <div>
+        <span [class]="tableDetailsRowStyle.title">Version:</span>
+        <span [class]="tableDetailsRowStyle.data">1.0</span>  <!-- TODO: version automation -->
+      </div>
+
+      <div>
+        <span [class]="tableDetailsRowStyle.title">Author:</span>
+        <span [class]="tableDetailsRowStyle.data">Piotr Mludzik 🇵🇱</span>
+      </div>
+    </div>
+  </div>
+
+  <acn-block-description title="Description">
+    About Countries is a web application designed to provide an interactive and visually appealing exploration of
+    country-specific data. It allows users to access detailed information, compare metrics, and analyze global data
+    seamlessly. The application leverages the
+    <a href="https://restcountries.com"
+       target="_blank"
+       rel="noopener noreferrer">
+      Rest Countries API
+    </a>
+    .
+  </acn-block-description>
+
+  <acn-block-description title="Features">
+    Comprehensive country data, including population, region, and flags. Detailed views with metrics such as area,
+    time zones, currencies, and neighbors. Search, filter, and side-by-side country comparisons for enhanced
+    usability.
+  </acn-block-description>
+
+  <acn-block-description title="License">
+    This application is open-source and distributed under the
+    <a href="https://github.com/piotrmludzik/about-countries-ng?tab=MIT-1-ov-file#readme"
+       target="_blank"
+       rel="noopener noreferrer">
+      MIT License
+    </a>
+    .
+  </acn-block-description>
+
+  <acn-block-description title="Source Code">
+    The source code for this project can be found here:
+    <a href="https://github.com/piotrmludzik/about-countries-ng"
+       target="_blank"
+       rel="noopener noreferrer">
+      About Countries on GitHub
+    </a>
+    .
+  </acn-block-description>
+
+  <acn-buttons-container>
+    <p-button label="Close" (click)="onClose()" />
+  </acn-buttons-container>
+</acn-data-container>

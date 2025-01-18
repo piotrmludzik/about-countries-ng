@@ -5,6 +5,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideStore } from '@ngrx/store';
 import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { routes } from './app.routes';
 import { defaultAppConfig } from './core/constants/default-app-config.const';
 import { tokens } from './core/constants/tokens.const';
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
 
     // PrimeNg
     DecimalPipe,
+    DialogService,
     MessageService,
 
     // Project

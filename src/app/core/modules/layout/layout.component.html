@@ -3,7 +3,8 @@
     <div class="flex flex-column xl:flex-row row-gap-5 column-gap-1 p-3 md:px-5 md:py-3">
       <acn-layout-bar [stats]="stats" />
 
-      <acn-layout-toolbox (continentsChange)="onContinentsChange($event)"
+      <acn-layout-toolbox [menuItems]="layoutMenuConfig"
+                          (continentsChange)="onContinentsChange($event)"
                           (searchChange)="onSearchChange($event)" />
     </div>
   }

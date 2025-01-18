@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { continentsOptions } from '../../../../../shared/constants';
 
 @Component({
@@ -9,6 +10,8 @@ import { continentsOptions } from '../../../../../shared/constants';
 export class LayoutToolboxComponent {
 
   protected readonly continentsOptions = continentsOptions;
+
+  @Input() menuItems!: MenuItem[];
 
   @Output() continentsChange = new EventEmitter<string[] | null>();
   @Output() searchChange = new EventEmitter<string>();
