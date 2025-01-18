@@ -6,7 +6,7 @@
 
 This project serves as a technical showcase, highlighting skills in frontend development, particularly in API integration, state management, and component-based UI design. **About Countries** demonstrates an efficient and user-friendly approach to data visualization by leveraging popular technologies and best practices. This project is intended as a demonstration and will not be actively maintained.
 
-![application preview](public/app-preview.png "About Countries application preview")
+![application preview](docs/app-preview.png "About Countries application preview")
 
 ## Key Features
 
@@ -36,6 +36,7 @@ The project structure will be documented here to illustrate its modular and orga
 
 ```plaintext
 src/
+├── docs                     # Application documentation
 ├── example                  # Examples for development purposes
 ├── public                   # Assets folder
 ├── src
