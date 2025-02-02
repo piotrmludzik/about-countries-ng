@@ -1,5 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-import { tokens } from '../../../../core/constants/tokens.const';
+import { Component, Input } from '@angular/core';
 import { CountryDetails } from '../../models/country.model';
 
 @Component({
@@ -9,12 +8,7 @@ import { CountryDetails } from '../../models/country.model';
 })
 export class CountryDetailsComponent {
 
-  protected readonly tooltipDelay = inject(tokens.appConfig).tooltipDelay;
-
-  protected countryFlagLoading = true;
-  protected countryCoatOfArmsLoading = true;
-
-  @Input() country!: CountryDetails;
-  @Input() countryLoading!: boolean;
+  @Input() loading = true;
+  @Input() country?: CountryDetails;
 
 }

@@ -1,8 +1,35 @@
-<table class="flex-grow-1">
-  <acn-table-details-row title="Official name" [data]="officialName" titleClass="w-8rem" />
-  <acn-table-details-row title="Capital" [data]="capital | emptyValue" titleClass="w-8rem" />
-  <acn-table-details-row title="Population" [data]="(population | number) + ' people'" titleClass="w-8rem" />
-  <acn-table-details-row title="Area" [data]="area | area" titleClass="w-8rem" />
-  <acn-table-details-row title="Languages" [data]="languages | languageList | emptyValue" titleClass="w-8rem" />
-  <acn-table-details-row title="Currencies" [data]="currencies | currenciesList | emptyValue" titleClass="w-8rem" />
-</table>
+@if (loading) {
+  <div class="flex flex-column gap-3">
+    <div *ngFor="let i of [].constructor(6)" class="flex gap-3">
+      <p-skeleton width="8rem" />
+      <p-skeleton class="flex-grow-1" />
+    </div>
+  </div>
+
+} @else {
+  <table class="flex-grow-1">
+    <acn-table-details-row title="Official name"
+                           [data]="officialName | emptyValue"
+                           titleClass="w-8rem" />
+
+    <acn-table-details-row title="Capital"
+                           [data]="capital | stringList | emptyValue"
+                           titleClass="w-8rem" />
+
+    <acn-table-details-row title="Population"
+                           [data]="population ? (population | number) + ' people' : '' | emptyValue"
+                           titleClass="w-8rem" />
+
+    <acn-table-details-row title="Area"
+                           [data]="area | area | emptyValue"
+                           titleClass="w-8rem" />
+
+    <acn-table-details-row title="Languages"
+                           [data]="languages | languageList | emptyValue"
+                           titleClass="w-8rem" />
+
+    <acn-table-details-row title="Currencies"
+                           [data]="currencies | currenciesList | emptyValue"
+                           titleClass="w-8rem" />
+  </table>
+}

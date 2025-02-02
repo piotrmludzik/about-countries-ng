@@ -13,7 +13,9 @@ export class AreaPipe implements PipeTransform {
 
   private readonly digitsInfo = inject(tokens.appConfig).digitsInfo;
 
-  transform(value: number): string {
+  transform(value: number | null | undefined): string {
+    if (!value) return '';
+
     const formattedNumber = this.decimalPipe.transform(value, this.digitsInfo);
     return `${formattedNumber}${unicode.nonBreakingSpace}m²`;
   }

@@ -1,31 +1,61 @@
-<div>
-  <table class="flex-grow-1">
-    <acn-table-details-row title="Continent" [data]="continents | stringList" titleClass="w-8rem" />
-    <acn-table-details-row title="Region" [data]="region" titleClass="w-8rem" />
-    <acn-table-details-row title="Subregion" [data]="subregion | emptyValue" titleClass="w-8rem" />
-    <acn-table-details-row title="Coordinates:" [data]="coordinates | coordinates" titleClass="w-8rem" />
+@if (loading) {
+  <div class="flex flex-column gap-3">
+    <div *ngFor="let i of [].constructor(8)" class="flex gap-3">
+      <p-skeleton width="8rem" />
+      <p-skeleton class="flex-grow-1" />
+    </div>
+  </div>
 
-    <tr>
-      <td class="{{ tableDetailsRowStyle.title }} w-8rem">Google Maps:</td>
-      <td [class]="tableDetailsRowStyle.data">
-        <a href="{{googleMapsLink}}" target="_blank">{{ googleMapsLink }}</a>
-      </td>
-    </tr>
+} @else {
+  <div>
+    <table class="flex-grow-1">
+      <acn-table-details-row title="Continent"
+                             [data]="continents | stringList | emptyValue"
+                             titleClass="w-8rem" />
 
-    <tr>
-      <td class="{{ tableDetailsRowStyle.title }} w-8rem">Borders:</td>
-      <td [class]="tableDetailsRowStyle.data">
-        @if (!!borders) {
-          @for (borderCountry of borders; track borderCountry.cca3; let last = $last) {
-            {{ borderCountry.flag }} {{ borderCountry.name.common + (last | separator) }}
+      <acn-table-details-row title="Region"
+                             [data]="region | emptyValue"
+                             titleClass="w-8rem" />
+
+      <acn-table-details-row title="Subregion"
+                             [data]="subregion | emptyValue"
+                             titleClass="w-8rem" />
+
+      <acn-table-details-row title="Coordinates:"
+                             [data]="coordinates | coordinates | emptyValue"
+                             titleClass="w-8rem" />
+
+      <tr>
+        <td class="{{ tableDetailsRowStyle.title }} w-8rem">Google Maps:</td>
+        <td [class]="tableDetailsRowStyle.data">
+          @if (googleMapsLink) {
+            <a href="{{googleMapsLink}}" target="_blank">{{ googleMapsLink }}</a>
+          } @else {
+            {{ '' | emptyValue }}
           }
-        } @else {
-          {{ '' | emptyValue }}
-        }
-      </td>
-    </tr>
+        </td>
+      </tr>
 
-    <acn-table-details-row title="Access to the sea" [data]="!landlocked ? 'Yes' : 'No'" titleClass="w-8rem" />
-    <acn-table-details-row title="Timezone:" [data]="timezones | stringList" titleClass="w-8rem" />
-  </table>
-</div>
+      <tr>
+        <td class="{{ tableDetailsRowStyle.title }} w-8rem">Borders:</td>
+        <td [class]="tableDetailsRowStyle.data">
+          @if (!!borders) {
+            @for (borderCountry of borders; track borderCountry.cca3; let last = $last) {
+              {{ borderCountry.flag }} {{ borderCountry.name.common + (last | separator) }}
+            }
+          } @else {
+            {{ '' | emptyValue }}
+          }
+        </td>
+      </tr>
+
+      <acn-table-details-row title="Access to the sea"
+                             [data]="!landlocked ? 'Yes' : 'No'"
+                             titleClass="w-8rem" />
+
+      <acn-table-details-row title="Timezone:"
+                             [data]="timezones | stringList | emptyValue"
+                             titleClass="w-8rem" />
+    </table>
+  </div>
+}

@@ -8,10 +8,11 @@ import { Currency } from '../../../models/country.model';
 })
 export class CountryDetailsBasicDataComponent {
 
-  @Input() officialName!: string;
-  @Input() capital!: string;
-  @Input() population!: number;
-  @Input() area!: number;
+  @Input() loading!: boolean;
+  @Input() officialName?: string;
+  @Input() capital?: string[];
+  @Input() population?: number;
+  @Input() area?: number;
   @Input() languages?: Dictionary;
   @Input() currencies?: Dictionary<Currency>;
 
