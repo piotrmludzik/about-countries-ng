@@ -7,7 +7,6 @@ import { tokens } from '../../../core/constants/tokens.const';
 
 @Component({
   selector: 'acn-input-search',
-  standalone: true,
   imports: [
     // Angular
     CommonModule,

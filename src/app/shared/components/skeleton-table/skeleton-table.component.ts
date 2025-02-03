@@ -6,7 +6,6 @@ import { Column } from '../../models';
 
 @Component({
   selector: 'acn-skeleton-table',
-  standalone: true,
   imports: [
     // Angular
     CommonModule,

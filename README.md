@@ -43,10 +43,10 @@ src/
 │   ├── app                  # Application code
 │   │   ├── core             # Things that last the life of the app
 │   │   │   ├── constants
+│   │   │   ├── layout
 │   │   │   ├── models
-│   │   │   ├── modules
 │   │   │   └── store
-│   │   ├── modules          # Things related to business features
+│   │   ├── features         # Things related to business features
 │   │   └── shared           # Things shared between business functionalities
 │   │       ├── components 
 │   │       ├── constants

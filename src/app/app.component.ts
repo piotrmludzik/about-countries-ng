@@ -1,22 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
+import { Button } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { environment } from '../environments/environment';
-import { LayoutModule } from './core/modules/layout/layout.module';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
+  selector: 'acn-root',
   imports: [
     // Angular
-    RouterOutlet,
 
     // PrimeNg
     ToastModule,
+    Button
 
     // Project
-    LayoutModule
   ],
   templateUrl: './app.component.html'
 })
@@ -24,7 +21,7 @@ export class AppComponent implements OnInit {
 
   private titleService = inject(Title);
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.titleService.setTitle(environment.app.name);
   }
 

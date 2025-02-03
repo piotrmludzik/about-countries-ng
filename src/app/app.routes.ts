@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { routeName } from './core/constants/route-names.const';
-import { LayoutComponent } from './core/modules/layout/layout.component';
+import { LayoutComponent } from './core/layout/layout.component';
 
 export const routes: Routes = [
   {
@@ -14,7 +14,7 @@ export const routes: Routes = [
       },
       {
         path: routeName.countries,
-        loadChildren: () => import('./modules/countries/countries.module').then(w => w.CountriesModule)
+        loadChildren: () => import('./features/countries/countries.module').then(w => w.CountriesModule)
       }
     ]
   },

@@ -1,6 +1,6 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
 import { tokens } from '../../core/constants/tokens.const';
-import { Currency } from '../../modules/countries/models/country.model';
+import { Currency } from '../../features/countries/models/country.model';
 import { Dictionary } from '../models';
 
 @Pipe({

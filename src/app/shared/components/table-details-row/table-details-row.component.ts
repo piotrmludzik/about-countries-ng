@@ -3,7 +3,6 @@ import { tableDetailsRowStyle } from './table-details-row-style.const';
 
 @Component({
   selector: 'acn-table-details-row',
-  standalone: true,
   templateUrl: './table-details-row.component.html',
   styles: ':host{display: contents}'
 })

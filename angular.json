@@ -5,34 +5,6 @@
   "projects": {
     "about-countries-ng": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:component": {
-          "standalone": true,
-          "style": "scss",
-          "inlineStyle": true,
-          "skipImport": false,
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "standalone": true,
-          "skipImport": true,
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "standalone": true,
-          "skipImport": true,
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        },
-        "@ngrx/schematics:component-store": {
-          "skipTests": true
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "acn",
@@ -124,6 +96,37 @@
             ],
             "scripts": []
           }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:module": {
+          "routing": true
+        },
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss",
+          "inlineStyle": true,
+          "skipImport": false,
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": true,
+          "skipImport": true,
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true,
+          "skipImport": true,
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@ngrx/schematics:component-store": {
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
         }
       }
     }

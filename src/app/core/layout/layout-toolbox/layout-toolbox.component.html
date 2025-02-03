@@ -1,0 +1,17 @@
+<div class="flex flex-column sm:flex-row justify-content-between md:justify-content-end align-items-end gap-3 p-fluid">
+  <p-floatlabel class="w-full md:w-auto">
+    <p-multiSelect inputId="continents-filter"
+                   [options]="continentsOptions"
+                   placeholder="Select continents"
+                   [showClear]="true"
+                   [showHeader]="false"
+                   styleClass="lg:max-w-15rem"
+                   (onChange)="continentsChange.emit($event.value)"
+                   (onClear)="continentsChange.emit(null)" />
+    <label for="continents-filter">Filter by continents</label>
+  </p-floatlabel>
+
+  <acn-input-search class="w-full md:w-auto md:max-w-15rem" (valueChange)="searchChange.emit($event)" />
+
+  <acn-layout-menu [menuItems]="menuItems" class="w-full sm:w-auto" style="margin-bottom: 0.2em" />
+</div>

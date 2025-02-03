@@ -1,11 +1,8 @@
-// PrimeNg Theme
-@import "primeng/resources/themes/viva-light/theme.css";
-//@import "primeng/resources/themes/viva-dark/theme.css";  <!-- NOTE: alternative to dark mode -->
+// Tailwind
+@use "tailwindcss";
 
 // PrimeNg
-@import "primeng/resources/primeng.css";
-@import "primeflex/primeflex.css";
-@import "primeicons/primeicons.css";
+//@use "primeicons/primeicons.css";
 
 // Project
-@import "styles/styles.scss";
+//@use "styles/styles.scss";
